@@ -10,24 +10,33 @@ import java.lang.reflect.Constructor;
 public class HashTable2 {
 
 	int[] data;
+	boolean[] santasHelper;
 
-	public HashTable2(){
-		int[] data = new int[1];
+	public HashTable2() {
+		int[] data = new int[100];
+		boolean[] hlp = new boolean[100];
 		this.data = data;
+		this.santasHelper = hlp;
 	}
+
 	/*
 	 * Metoda sprejme število in ga vstavi v tabelo. Metoda vrne true, ce je
 	 * bilo ustavljanje uspešno in false sicer
 	 */
 	public boolean insert(int key) {
-		for (int i : data) {
-			if (key==i) {return false;}
+		int loc = 53 * key % 100;
+		if (search(key)) {
+			return false;
 		}
-		int[] newdata = new int[this.data.length+1];
-		for (int i : data) {
-			newdata[i]=data[i];
+		int i = loc;
+		while (!santasHelper[i]) {
+			if (i == data.length - 1) {
+				i = 0;
+			} else {
+				i++;
+			}
 		}
-		newdata[newdata.length]= key;
+		data[i] = key;
 		return true;
 	}
 
@@ -36,10 +45,16 @@ public class HashTable2 {
 	 * bilo ustavljanje uspešno in false sicer
 	 */
 	public boolean search(int key) {
-		for (int i : data) {
-			if (key==i) {return true;}
+		int loc = 53 * key % 100;
+		int i = loc;
+		while (santasHelper[i]) {
+			if (i == data.length - 1) {
+				i = 0;
+			} else {
+				i++;
+			}
 		}
-		return false;
+
 	}
 
 	/*
@@ -47,17 +62,19 @@ public class HashTable2 {
 	 * bilo ustavljanje uspešno in false sicer
 	 */
 	public boolean delete(int key) {
-		if ( search(key) == false ) {return false;}
-		int[] newdata = new int[data.length-1];
+		if (search(key) == false) {
+			return false;
+		}
+		int[] newdata = new int[data.length - 1];
 		boolean isFound = false;
 		for (int i : newdata) {
-			if ( data[i] == key ) {
+			if (data[i] == key) {
 				isFound = true;
 			}
 			if (isFound) {
-				newdata[i]= data[i];	
+				newdata[i] = data[i];
 			} else {
-				newdata[i]= data[i+1];
+				newdata[i] = data[i + 1];
 			}
 		}
 		this.data = newdata;
