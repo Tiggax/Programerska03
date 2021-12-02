@@ -1,5 +1,7 @@
 package psa.naloga3;
 
+import java.lang.reflect.Constructor;
+
 /*
  * Razred mora imeplementirati podatkovno strukturo Razprsilne tabele.
  * Za funkcijo uporabite: h(x) = x * 53 mod 100
@@ -9,6 +11,10 @@ public class HashTable2 {
 
 	int[] data;
 
+	public HashTable2(){
+		int[] data = new int[1];
+		this.data = data;
+	}
 	/*
 	 * Metoda sprejme število in ga vstavi v tabelo. Metoda vrne true, ce je
 	 * bilo ustavljanje uspešno in false sicer
