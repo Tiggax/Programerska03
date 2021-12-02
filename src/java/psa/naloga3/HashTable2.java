@@ -30,9 +30,12 @@ public class HashTable2 {
 			return false;
 		}
 		int i = loc;
-		while (!santasHelper[i]) {
+		boolean looper = false;
+		while (santasHelper[i]) {
 			if (i == data.length - 1) {
+				if (looper) {break;}
 				i = 0;
+				looper = true;
 			} else {
 				i++;
 			}
@@ -48,12 +51,15 @@ public class HashTable2 {
 	public boolean search(int key) {
 		int loc = locateMe(key);
 		int i = loc;
+		boolean looper = false;
 		while (santasHelper[i]) {
 			if ( data[i] == key ) {
 				return true;
 			}
 			if (i == data.length - 1) {
+				if (looper) {break;}
 				i = 0;
+				looper = true;
 			} else {
 				i++;
 			}
@@ -68,13 +74,16 @@ public class HashTable2 {
 	public boolean delete(int key) {
 		if (!search(key)) {return false;}
 		int i = locateMe(key);
+		boolean looper = false;
 		while (santasHelper[i]) {
 			if ( data[i] == key ) {
 				santasHelper[i]= true;
 				return true;
 			}
 			if (i == data.length - 1) {
+				if (looper) {break;}
 				i = 0;
+				looper = true;
 			} else {
 				i++;
 			}
