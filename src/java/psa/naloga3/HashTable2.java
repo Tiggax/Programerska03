@@ -12,17 +12,12 @@ public class HashTable2 {
 	boolean[] santasHelper;
 
 	public HashTable2() {
-		int[] data = new int[100];
-		boolean[] hlp = new boolean[100];
-		this.data = data;
-		this.santasHelper = hlp;
+		this.data = new int[100];
+		this.santasHelper = new boolean[100];
 	}
 	public int locateMe(int x) {
 		int loc = 53 * x % 100;
-		if (loc<0) {
 			return Math.abs(loc);
-		}
-		return loc;
 	}
 
 	/*
@@ -42,7 +37,7 @@ public class HashTable2 {
 				i++;
 			}
 		}
-		data[i] = key;
+		this.data[i] = key;
 		return true;
 	}
 

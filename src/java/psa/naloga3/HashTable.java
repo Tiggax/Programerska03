@@ -12,8 +12,11 @@ public class HashTable {
 
 	public HashTable(){
 		// h(x)= (701x) mod 2000
-		HashTable2[] data = new HashTable2[2000];
-		this.data = data;
+		this.data = new HashTable2[2000];
+	}
+	public int locateMe(int x) {
+		int loc = 701 * x % 2000;
+			return Math.abs(loc);
 	}
 
 	/*
@@ -21,7 +24,7 @@ public class HashTable {
 	 * bilo ustavljanje uspešno in false sicer
 	 */
 	public boolean insert(int key) {
-		int loc = (701*key%2000);
+		int loc = locateMe(key);
 		return data[loc].insert(key);
 	}
 
@@ -30,7 +33,7 @@ public class HashTable {
 	 * bilo ustavljanje uspešno in false sicer
 	 */
 	public boolean search(int key) {
-		int loc = (701*key%2000);
+		int loc = locateMe(key);
 		return data[loc].search(key);
 	}
 
@@ -39,7 +42,7 @@ public class HashTable {
 	 * bilo ustavljanje uspešno in false sicer
 	 */
 	public boolean delete(int key) {
-		int loc = (701*key%2000);
+		int loc = locateMe(key);
 		return data[loc].delete(key);
 	}
 }
