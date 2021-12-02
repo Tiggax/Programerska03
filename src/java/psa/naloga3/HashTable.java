@@ -25,6 +25,7 @@ public class HashTable {
 	 */
 	public boolean insert(int key) {
 		int loc = locateMe(key);
+		if ( data[loc] == null ) {this.data[loc] = new HashTable2();}
 		return data[loc].insert(key);
 	}
 
