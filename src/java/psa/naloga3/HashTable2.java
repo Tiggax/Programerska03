@@ -14,7 +14,15 @@ public class HashTable2 {
 	 * bilo ustavljanje uspešno in false sicer
 	 */
 	public boolean insert(int key) {
-		throw new UnsupportedOperationException("To funkcijo morate implementirati");
+		for (int i : data) {
+			if (key==i) {return false;}
+		}
+		int[] newdata = new int[this.data.length+1];
+		for (int i : data) {
+			newdata[i]=data[i];
+		}
+		newdata[newdata.length]= key;
+		return true;
 	}
 
 	/*
@@ -22,7 +30,10 @@ public class HashTable2 {
 	 * bilo ustavljanje uspešno in false sicer
 	 */
 	public boolean search(int key) {
-		throw new UnsupportedOperationException("To funkcijo morate implementirati");
+		for (int i : data) {
+			if (key==i) {return true;}
+		}
+		return false;
 	}
 
 	/*
@@ -30,6 +41,20 @@ public class HashTable2 {
 	 * bilo ustavljanje uspešno in false sicer
 	 */
 	public boolean delete(int key) {
-		throw new UnsupportedOperationException("To funkcijo morate implementirati");
+		if ( search(key) == false ) {return false;}
+		int[] newdata = new int[data.length-1];
+		boolean isFound = false;
+		for (int i : newdata) {
+			if ( data[i] == key ) {
+				isFound = true;
+			}
+			if (isFound) {
+				newdata[i]= data[i];	
+			} else {
+				newdata[i]= data[i+1];
+			}
+		}
+		this.data = newdata;
+		return true;
 	}
 }
