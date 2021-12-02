@@ -41,6 +41,7 @@ public class HashTable2 {
 			}
 		}
 		this.data[i] = key;
+		this.santasHelper[i]= true;
 		return true;
 	}
 
