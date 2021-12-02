@@ -10,6 +10,11 @@ package psa.naloga3;
 public class HashTable {
 	HashTable2[] data;
 
+	public HashTable(){
+		// h(x)= (701x) mod 2000
+		
+	}
+
 	/*
 	 * Metoda sprejme število in ga vstavi v tabelo. Metoda vrne true, ce je
 	 * bilo ustavljanje uspešno in false sicer
