@@ -48,13 +48,16 @@ public class HashTable2 {
 		int loc = 53 * key % 100;
 		int i = loc;
 		while (santasHelper[i]) {
+			if ( data[i] == key ) {
+				return true;
+			}
 			if (i == data.length - 1) {
 				i = 0;
 			} else {
 				i++;
 			}
 		}
-
+		return false;
 	}
 
 	/*
