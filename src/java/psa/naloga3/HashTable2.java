@@ -1,6 +1,5 @@
 package psa.naloga3;
 
-import java.lang.reflect.Constructor;
 
 /*
  * Razred mora imeplementirati podatkovno strukturo Razprsilne tabele.
@@ -18,13 +17,20 @@ public class HashTable2 {
 		this.data = data;
 		this.santasHelper = hlp;
 	}
+	public int locateMe(int x) {
+		int loc = 53 * x % 100;
+		if (loc<0) {
+			return Math.abs(loc);
+		}
+		return loc;
+	}
 
 	/*
 	 * Metoda sprejme število in ga vstavi v tabelo. Metoda vrne true, ce je
 	 * bilo ustavljanje uspešno in false sicer
 	 */
 	public boolean insert(int key) {
-		int loc = 53 * key % 100;
+		int loc = locateMe(key);
 		if (search(key)) {
 			return false;
 		}
@@ -45,7 +51,7 @@ public class HashTable2 {
 	 * bilo ustavljanje uspešno in false sicer
 	 */
 	public boolean search(int key) {
-		int loc = 53 * key % 100;
+		int loc = locateMe(key);
 		int i = loc;
 		while (santasHelper[i]) {
 			if ( data[i] == key ) {
@@ -65,22 +71,19 @@ public class HashTable2 {
 	 * bilo ustavljanje uspešno in false sicer
 	 */
 	public boolean delete(int key) {
-		if (search(key) == false) {
-			return false;
-		}
-		int[] newdata = new int[data.length - 1];
-		boolean isFound = false;
-		for (int i : newdata) {
-			if (data[i] == key) {
-				isFound = true;
+		if (!search(key)) {return false;}
+		int i = locateMe(key);
+		while (santasHelper[i]) {
+			if ( data[i] == key ) {
+				santasHelper[i]= true;
+				return true;
 			}
-			if (isFound) {
-				newdata[i] = data[i];
+			if (i == data.length - 1) {
+				i = 0;
 			} else {
-				newdata[i] = data[i + 1];
+				i++;
 			}
 		}
-		this.data = newdata;
-		return true;
+		return false;
 	}
 }
