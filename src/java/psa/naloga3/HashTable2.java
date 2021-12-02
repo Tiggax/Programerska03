@@ -12,17 +12,19 @@ public class HashTable2 {
 	int[] data;
 
 	public HashTable2(){
-		int[] data = new int[1];
-		this.data = data;
 	}
 	/*
 	 * Metoda sprejme število in ga vstavi v tabelo. Metoda vrne true, ce je
 	 * bilo ustavljanje uspešno in false sicer
 	 */
 	public boolean insert(int key) {
-		for (int i : data) {
-			if (key==i) {return false;}
+		if ( data == null ) {
+			int[] newdata = new int[1];
+			newdata[0]= key;
+			this.data = newdata;
+			return true;	
 		}
+		if (search(key)) {return false;}
 		int[] newdata = new int[this.data.length+1];
 		for (int i : data) {
 			newdata[i]=data[i];
