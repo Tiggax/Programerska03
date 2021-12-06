@@ -35,6 +35,7 @@ public class HashTable {
 	 */
 	public boolean search(int key) {
 		int loc = locateMe(key);
+		if ( data[loc] == null ) {return false;}
 		return data[loc].search(key);
 	}
 
@@ -44,6 +45,7 @@ public class HashTable {
 	 */
 	public boolean delete(int key) {
 		int loc = locateMe(key);
+		if ( data[loc] == null ) {return false;}
 		return data[loc].delete(key);
 	}
 }
