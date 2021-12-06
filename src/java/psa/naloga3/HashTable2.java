@@ -78,7 +78,7 @@ public class HashTable2 {
 		boolean looper = false;
 		while (santasHelper[i]) {
 			if ( data[i] == key ) {
-				santasHelper[i]= true;
+				santasHelper[i]= false;
 				return true;
 			}
 			if (i == data.length - 1) {
