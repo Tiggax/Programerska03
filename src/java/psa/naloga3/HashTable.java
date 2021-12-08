@@ -15,8 +15,8 @@ public class HashTable {
 		this.data = new HashTable2[2000];
 	}
 	public int locateMe(int x) {
-		int loc = 701 * x % 2000;
-			return Math.abs(loc);
+		int loc = 701 * Math.abs(x) % 2000;
+			return loc;
 	}
 
 	/*
