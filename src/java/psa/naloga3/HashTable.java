@@ -11,12 +11,11 @@ public class HashTable {
 	HashTable2[] data;
 
 	public HashTable(){
-		// h(x)= (701x) mod 2000
 		this.data = new HashTable2[2000];
 	}
 	public int locateMe(int x) {
-		int loc = 701 * Math.abs(x) % 2000;
-			return loc;
+		// h(x)= (701x) mod 2000
+		return ((( 701 *x % 2000 ) + 2000 ) % 2000 );
 	}
 
 	/*

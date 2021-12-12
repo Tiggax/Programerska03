@@ -16,8 +16,7 @@ public class HashTable2 {
 		this.santasHelper = new boolean[100];
 	}
 	public int locateMe(int x) {
-		int loc = 53 * Math.abs(x) % 100;
-			return loc;
+		return ((( 53 *x % 100 ) + 100 ) % 100 );
 	}
 
 	/*
